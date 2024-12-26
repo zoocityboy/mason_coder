@@ -4,6 +4,8 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: "https://zoocityboy.github.io/",
+	base: "/mason_coder/",
 	integrations: [
 		starlight({
 			title: 'Mason Coder',
