@@ -45,3 +45,4 @@ dependency_overrides:
    path: ../interact
 executables: 
   mason_coder:
+  mc: bin/mason_coder.dart
