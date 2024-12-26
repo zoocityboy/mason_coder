@@ -1,0 +1,12 @@
+import 'package:flutter/material.dart';
+
+class {{feature_name.pascalCase()}}DetailCubitContentView extends StatelessWidget {
+  const {{feature_name.pascalCase()}}DetailCubitContentView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      key: const Key('{{feature_name.snakeCase()}}_detail_cubit_content_view'),
+    );
+  }
+}

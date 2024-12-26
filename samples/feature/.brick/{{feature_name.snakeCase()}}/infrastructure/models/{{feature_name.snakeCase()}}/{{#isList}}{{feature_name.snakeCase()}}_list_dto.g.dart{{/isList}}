@@ -1,0 +1,16 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of '{{feature_name.snakeCase()}}_list_dto.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+{{feature_name.pascalCase()}}Dto _${{feature_name.pascalCase()}}DtoFromJson(Map json) => {{feature_name.pascalCase()}}Dto(
+      id: (json['id'] as num?)?.toInt() ?? -1,
+    );
+
+Map<String, dynamic> _${{feature_name.pascalCase()}}DtoToJson({{feature_name.pascalCase()}}Dto instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+    };

@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../cubit/{{feature_name.snakeCase()}}_list/{{feature_name.snakeCase()}}_list_cubit.dart';
+
+class {{feature_name.pascalCase()}}ListCubitView extends StatelessWidget {
+  const {{feature_name.pascalCase()}}ListCubitView({
+    required this.initial,
+    required this.inProgress,
+    required this.onFailure,
+    required this.onSuccess,
+    super.key,
+  });
+  final WidgetBuilder initial;
+  final WidgetBuilder inProgress;
+  final {{feature_name.pascalCase()}}ListFailureWidgetBuilder onFailure;
+  final {{feature_name.pascalCase()}}ListSuccesWidgetBuilder onSuccess;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<{{feature_name.pascalCase()}}ListCubit, {{feature_name.pascalCase()}}ListState>(
+      builder: (context, state) {
+        return switch (state) {
+          {{feature_name.pascalCase()}}ListInitialState() => initial(context),
+          {{feature_name.pascalCase()}}ListInProgressState() => inProgress(context),
+          {{feature_name.pascalCase()}}ListLoadFailureState(error: final error) => onFailure(context, error),
+          {{feature_name.pascalCase()}}ListLoadSuccessState(data: final data) => onSuccess(context, data),
+        };
+      },
+    );
+  }
+}
+
+typedef {{feature_name.pascalCase()}}ListSuccesWidgetBuilder = Widget Function(
+  BuildContext context,
+  Object data,
+);
+typedef {{feature_name.pascalCase()}}ListFailureWidgetBuilder = Widget Function(
+  BuildContext context,
+  Object data,
+);

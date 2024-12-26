@@ -1,0 +1,30 @@
+name: eit_feature
+description: Feature template for Embedit Platform.
+version: 0.1.0
+environment:
+  mason: 0.0.0
+vars:
+  name:
+    type: string
+    description: Name of feature
+    prompt: Feature name
+  state_management:
+    type: enum
+    description: The features state management
+    default: bloc
+    prompt: "What is the features state management?"
+    values:
+      - bloc
+      - cubit
+      - none
+  list:
+    type: boolean
+    description: Generate list component
+    default: true
+    prompt: "Generate List Component?"
+  detail:
+    type: boolean
+    description: Generate Detail component
+    default: true
+    prompt: "Generate Detail Component?"
+

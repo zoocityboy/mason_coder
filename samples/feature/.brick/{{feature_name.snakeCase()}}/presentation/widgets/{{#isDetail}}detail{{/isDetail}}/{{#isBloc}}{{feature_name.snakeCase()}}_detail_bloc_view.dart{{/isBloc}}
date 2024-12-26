@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/{{feature_name.snakeCase()}}_detail/{{feature_name.snakeCase()}}_detail_bloc.dart';
+
+class {{feature_name.pascalCase()}}DetailBlocView extends StatelessWidget {
+  const {{feature_name.pascalCase()}}DetailBlocView({
+    required this.initial,
+    required this.inProgress,
+    required this.onFailure,
+    required this.onSuccess,
+    super.key,
+  });
+  final WidgetBuilder initial;
+  final WidgetBuilder inProgress;
+  final {{feature_name.pascalCase()}}DetailBlocFailureWidgetBuilder onFailure;
+  final {{feature_name.pascalCase()}}DetailBlocSuccesWidgetBuilder onSuccess;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<{{feature_name.pascalCase()}}DetailBloc, {{feature_name.pascalCase()}}DetailState>(
+      builder: (context, state) {
+        return switch (state) {
+          {{feature_name.pascalCase()}}DetailInitialState() => initial(context),
+          {{feature_name.pascalCase()}}DetailInProgressState() => inProgress(context),
+          {{feature_name.pascalCase()}}DetailLoadFailureState(error: final error) => onFailure(context, error),
+          {{feature_name.pascalCase()}}DetailLoadSuccessState(data: final data) => onSuccess(context, data),
+        };
+      },
+    );
+  }
+}
+
+typedef {{feature_name.pascalCase()}}DetailBlocSuccesWidgetBuilder = Widget Function(
+  BuildContext context,
+  Object data,
+);
+typedef {{feature_name.pascalCase()}}DetailBlocFailureWidgetBuilder = Widget Function(
+  BuildContext context,
+  Object data,
+);

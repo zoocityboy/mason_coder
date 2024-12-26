@@ -1,0 +1,21 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of '{{feature_name.snakeCase()}}_detail_dto.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+{{feature_name.pascalCase()}}DetailDto _${{feature_name.pascalCase()}}DetailDtoFromJson(
+        Map<String, dynamic> json) =>
+    {{feature_name.pascalCase()}}DetailDto(
+      id: (json['id'] as num?)?.toInt() ?? -1,
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _${{feature_name.pascalCase()}}DetailDtoToJson(
+        {{feature_name.pascalCase()}}DetailDto instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'id': instance.id,
+    };

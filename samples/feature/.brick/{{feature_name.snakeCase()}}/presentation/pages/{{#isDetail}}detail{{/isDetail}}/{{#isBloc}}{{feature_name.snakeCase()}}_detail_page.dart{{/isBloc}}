@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../config/di/injection.dart';
+import '../../bloc/{{feature_name.snakeCase()}}_detail/{{feature_name.snakeCase()}}_detail_bloc.dart';
+import '../../widgets/detail/{{feature_name.snakeCase()}}_detail_bloc_content_view.dart';
+
+class {{feature_name.pascalCase()}}DetailPage extends StatelessWidget {
+  const {{feature_name.pascalCase()}}DetailPage({super.key});
+  static const String routeName = '{{feature_name.pascalCase()}}DetailPage';
+  static const String routePath = '{{feature_name.snakeCase()}}_detail_page';
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => locator<{{feature_name.pascalCase()}}DetailBloc>(), // ..add(const {{feature_name.pascalCase()}}DetailInitialEvent()),
+      child: Scaffold(
+        appBar: AppBar(),
+        body: const {{feature_name.pascalCase()}}DetailBlocContentView(),
+      ),
+    );
+  }
+}

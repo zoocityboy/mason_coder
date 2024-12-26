@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: mason_coder,interact_cli,intl,material_color_utilities
+dependency_overrides:
+  mason_coder:
+    path: ../..
+  interact_cli:
+    path: ../../../interact
+  intl: 0.19.0
+  material_color_utilities: 0.11.1

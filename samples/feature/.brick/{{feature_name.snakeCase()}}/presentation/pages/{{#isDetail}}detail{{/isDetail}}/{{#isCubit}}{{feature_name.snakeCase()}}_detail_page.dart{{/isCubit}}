@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../config/di/injection.dart';
+import '../../cubit/{{feature_name.snakeCase()}}_detail/{{feature_name.snakeCase()}}_detail_cubit.dart';
+import '../../widgets/detail/{{feature_name.snakeCase()}}_detail_cubit_content_view.dart';
+
+/// A page widget that displays the details of a {{feature_name.pascalCase()}} item.
+///
+/// This page is used to display the details of a {{feature_name.pascalCase()}} item and is
+/// navigated to using the [routeName] or [routePath] constants.
+class {{feature_name.pascalCase()}}DetailPage extends StatelessWidget {
+  const {{feature_name.pascalCase()}}DetailPage({super.key});
+  static const String routeName = '{{feature_name.pascalCase()}}DetailPage';
+  static const String routePath = '{{feature_name.snakeCase()}}_detail_page';
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => locator<{{feature_name.pascalCase()}}DetailCubit>(),
+      child: Scaffold(
+        appBar: AppBar(),
+        body: const {{feature_name.pascalCase()}}DetailCubitContentView(),
+      ),
+    );
+  }
+}
