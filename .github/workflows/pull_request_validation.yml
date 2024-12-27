@@ -24,6 +24,7 @@ jobs:
         run: dart analyze
     
       - name: Run tests
+        
         run: dart test
   docs:
     name: Build Documentation

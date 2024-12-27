@@ -27,7 +27,6 @@ class CreateCommand extends BaseCommand {
     spinner.success('Brick created');
 
     logger.verticalLine();
-
     final confirm = logger.confirm('Would you like to bundle this brick?', defaultValue: false);
     if (confirm) {
       logger.end('/$name/ complete');
