@@ -3,7 +3,7 @@ description: >
   Simple code to template conveter for Mason Brick.
   Solves the problem with development of large Mason Bricks. 
   Now you can use your testable and runnable code for development.
-version: 0.1.0
+version: 0.1.0+alpha.0
 homepage: https://github.com/zoocityboy/mason_coder
 repository: https://github.com/zoocityboy/mason_coder
 issue_tracker: https://github.com/zoocityboy/mason_coder/issues

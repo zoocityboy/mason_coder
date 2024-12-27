@@ -2,7 +2,7 @@
 
 import 'package:mason_coder/mason_coder.dart';
 import 'package:mason_coder/src/commands/create.dart';
-import 'package:mason_coder/src/l.dart';
+import 'package:mason_coder/src/utils/l.dart';
 
 /// Base Exception for Mason Brick Generator
 class MasonCoderException implements Exception {
