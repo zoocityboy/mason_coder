@@ -2,7 +2,7 @@ name: Deploy Astro Documentation
 
 on:
   push:
-    branches: [ release ]
+    tags: [ 'v*.*.*' ]
     paths:
       - 'docs/**'
   workflow_dispatch:
