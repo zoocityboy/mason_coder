@@ -1,20 +1,20 @@
 import 'package:mason_coder/mason_coder.dart';
-import 'package:mason_coder/src/config/replace_variable_properties.dart';
+import 'package:mason_coder/src/data/config/replace_variable_properties.dart';
 import 'package:path/path.dart' as p;
 import 'package:universal_io/io.dart';
 
 class ProcessTemplate {
   const ProcessTemplate();
 
-  /// Copy processed file to target location
-  Future<void> path(TemplateYaml tpl, File file, List<String> targetPathSegments) async {
-    final root = targetPathSegments.sublist(3).join(Platform.pathSeparator);
-    final newPath = p.join(tpl.brickDestinationPath, root);
+  // /// Copy processed file to target location
+  // Future<void> path(TemplateYaml tpl, File file, List<String> targetPathSegments) async {
+  //   final root = targetPathSegments.sublist(3).join(Platform.pathSeparator);
+  //   final newPath = p.join(tpl.brickDestinationPath, root);
 
-    final rel = p.relative(newPath, from: tpl.brickRootPath);
-    await File(newPath).create(recursive: true);
-    await file.rename(newPath);
-  }
+  //   final rel = p.relative(newPath, from: tpl.brickRootPath);
+  //   await File(newPath).create(recursive: true);
+  //   await file.rename(newPath);
+  // }
 
   /// Replace tokens in body of file
 

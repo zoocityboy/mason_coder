@@ -1,6 +1,8 @@
 template: eit_feature
 description: Feature template for Embedit Platform.
-source: lib/features/tpl_feature_name
+source: 
+ - lib/features/tpl_feature_name
+ - test/
 vars:
   name:
     type: string
@@ -99,7 +101,10 @@ replaces:
 
 clean:
   - lib/config
-  # - lib/features/tpl_feature_name
-  # - test/features/tpl_feature_name
   - test/helpers
-ext: ["dart", "yaml", "yml", "md"]
+ext: 
+  - dart
+  - yaml
+  - yml
+  - md
+  - mdx

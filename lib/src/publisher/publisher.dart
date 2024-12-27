@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:archive/archive_io.dart';
 import 'package:mason/mason.dart';
-import 'package:mason_coder/src/config/template_yaml.dart';
+import 'package:mason_coder/src/data/config/template_yaml.dart';
 import 'package:mason_coder/src/logger.dart';
 import 'package:path/path.dart' as path;
 import 'package:universal_io/io.dart';

@@ -7,9 +7,9 @@ version: 0.1.0
 homepage: https://github.com/zoocityboy/mason_coder
 repository: https://github.com/zoocityboy/mason_coder
 issue_tracker: https://github.com/zoocityboy/mason_coder/issues
-documentation: https://masoncoder.zoocityboy.space
-topics: [mason, template, generator]
-funding: [https://github.com/sponsors/zoocityboyt]
+documentation: https://zoocityboy.github.io/mason_coder/
+topics: [mason, coder, template, generator]
+funding: [https://github.com/sponsors/zoocityboy]
 
 platforms:
   linux:
@@ -17,7 +17,7 @@ platforms:
   windows:
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ">=3.6.0"
 
 # Add regular dependencies here.
 dependencies:
@@ -45,4 +45,4 @@ dependency_overrides:
    path: ../interact
 executables: 
   mason_coder:
-  mc: bin/mason_coder.dart
+  mc: mason_coder.dart

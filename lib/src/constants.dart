@@ -4,6 +4,8 @@ import 'package:meta/meta.dart';
 /// Constants for Mason Brick Generator
 @protected
 abstract class Constants {
+  static const String runner = 'mason_coder';
+
   /// Mandatory file names
   static const String bundleConfigFileName = 'mason_template.yaml';
   static const String pubspeckFileName = 'pubspec.yaml';
@@ -15,8 +17,6 @@ abstract class Constants {
 
   /// File structure
   static const String brickFolder = '__brick__';
-  static const String brickSourceFolder = '__brick_source__';
-  static const String templateBundle = 'bundle/tpl_template_name.bundle';
 
   /// RegExp
   static RegExp importLineContent = RegExp(r"\'(.*?)\'");

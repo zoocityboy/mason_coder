@@ -115,7 +115,7 @@ class Console {
     for (final line in lines) {
       if (lines.indexOf(line) == 0) {
         sb.write(linePrefixError);
-        sb.write('∴'.padRight(3).red().bold());
+        // sb.write('∴'.padRight(3).red().bold());
         sb.write(line.red());
       } else {
         sb.write(linePrefixVertical);
@@ -196,7 +196,7 @@ class Console {
     final sb = StringBuffer();
     sb.write(theme.hintStyle('└'));
     sb.write(' ' * (spacing - 1));
-    sb.write(' $title '.onMagenta().white());
+    sb.write(' $title '.onGray().white());
     if (message != null) {
       sb.write(' ');
       sb.write(theme.hintStyle(message));
@@ -226,7 +226,7 @@ class Console {
     _context.writeln(linePrefixVertical);
   }
 
-  void detail(String message, {bool verticalLine = false}) {
+  void detailStyled(String message, {bool verticalLine = false}) {
     if (_level.index > LogLevel.verbose.index) return;
     final sb = StringBuffer();
     if (verticalLine) {

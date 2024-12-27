@@ -17,12 +17,12 @@ abstract class L {
 
   /// TUI settings
 
-  static const String cmd = 'mason_brick_generator';
+  static const String cmd = 'mason_coder';
   static const String cmdDescription =
-      '$icon Bundle Generator\n\n  Create a Brick Bundle template from your runnable sample code.';
+      '$icon Mason Coder\n\n  Create a Brick Bundle template from your runnable sample code.';
   static final String cmdLink = link(
-    uri: Uri.parse('https://github.com/zoocityboy/mason-brick-generator'),
-    message: 'Bundle Generator',
+    uri: Uri.parse('https://github.com/zoocityboy/mason-coder'),
+    message: 'Mason Coder',
   );
   static final String cmdFooter = '\nCreated by 🦏 zoocityboy.\n ⌙ GitHub: $cmdLink \n ⌙ Documentation: $cmdLink.';
 
