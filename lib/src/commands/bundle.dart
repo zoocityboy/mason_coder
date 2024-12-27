@@ -10,7 +10,7 @@ class BundleCommand extends BaseCommand {
   @override
   Future<void> run() async {
     if (!check) {
-      logger.error('No bricks found');
+      logger.errorStyled('No bricks found');
       return;
     }
     logger.start(name, message: description);
