@@ -1,0 +1,24 @@
+import '{{feature_name.snakeCase()}}_entity.dart';
+
+typedef {{feature_name.pascalCase()}}DetailEntities = List<{{feature_name.pascalCase()}}DetailEntity>;
+
+class {{feature_name.pascalCase()}}DetailEntity extends {{feature_name.pascalCase()}}Entity {
+  const {{feature_name.pascalCase()}}DetailEntity({
+    required super.id,
+    required this.name,
+  });
+  final String name;
+  @override
+  List<Object?> get props => [id, name];
+
+  @override
+  {{feature_name.pascalCase()}}DetailEntity copyWith({
+    int? id,
+    String? name,
+  }) {
+    return {{feature_name.pascalCase()}}DetailEntity(
+      id: id ?? this.id,
+      name: name ?? this.name,
+    );
+  }
+}

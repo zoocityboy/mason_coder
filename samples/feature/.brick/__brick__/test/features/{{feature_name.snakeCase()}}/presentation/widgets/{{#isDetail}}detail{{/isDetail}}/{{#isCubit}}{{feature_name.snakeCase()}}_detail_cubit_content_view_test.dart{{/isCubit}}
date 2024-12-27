@@ -1,0 +1,17 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:{{packageName.snakeCase()}}/features/{{feature_name.snakeCase()}}/presentation/widgets/detail/{{feature_name.snakeCase()}}_detail_cubit_content_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import '../../../../../helpers/helpers.dart';
+
+void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  group('{{feature_name.pascalCase()}}DetailCubitContentView', () {
+    testWidgets('renders container with Key `{{feature_name.snakeCase()}}_detail_cubit_content_view`', (tester) async {
+      await tester.pumpApp({{feature_name.pascalCase()}}DetailCubitContentView());
+      expect(find.byKey(Key('{{feature_name.snakeCase()}}_detail_cubit_content_view')), findsOneWidget);
+    });
+  });
+}

@@ -34,30 +34,6 @@ class ProcessTemplate {
         }
       }
     }
-    // final rootFolder = Directory(p.join(Directory.current.path, tpl.source.replaceAll('\\', Platform.pathSeparator)));
-    // if (!rootFolder.existsSync()) {
-    //   throw Exception('Source folder does not exist: ${rootFolder.path}');
-    // }
-    // final contentFiles = rootFolder.listSync(recursive: true).where((e) {
-    //   final path = e.path.replaceAll('\\', Platform.pathSeparator);
-    //   final isOk = !ignorePathes.any((ignore) => path.contains(ignore));
-    //   return isOk;
-    // });
-    // for (final _ in contentFiles) {
-    //   final file = _;
-    //   if (file is File) {
-    //     final processedContentOfFile = _processContent(file);
-    //     final rel = p.relative(file.path, from: rootFolder.path);
-    //     final path = _replacePath(rel).join(Platform.pathSeparator);
-
-    //     final filePath = p.join(tpl.target, BrickYaml.dir, path);
-    //     final templateFile = TemplateFile(
-    //       filePath,
-    //       processedContentOfFile,
-    //     );
-    //     files.add(templateFile);
-    //   }
-    // }
 
     return files;
   }

@@ -1,0 +1,30 @@
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../../domain/entities/{{feature_name.snakeCase()}}/{{feature_name.snakeCase()}}_entity.dart';
+
+part '{{feature_name.snakeCase()}}_list_dto.g.dart';
+
+typedef {{feature_name.pascalCase()}}Dtos = List<{{feature_name.pascalCase()}}Dto>;
+
+@JsonSerializable(
+  explicitToJson: true,
+  anyMap: true,
+  createToJson: true,
+)
+class {{feature_name.pascalCase()}}Dto {
+  const {{feature_name.pascalCase()}}Dto({required this.id});
+  @override
+  factory {{feature_name.pascalCase()}}Dto.fromJson(Map<String, dynamic> json) => _${{feature_name.pascalCase()}}DtoFromJson(json);
+  @JsonKey(defaultValue: -1)
+  final int id;
+  Map<String, dynamic> toJson() => _${{feature_name.pascalCase()}}DtoToJson(this);
+
+  /// Convert [{{feature_name.pascalCase()}}Dto] DTO to domain [{{feature_name.pascalCase()}}Entity] model
+  {{feature_name.pascalCase()}}Entity toEntity() {
+    return {{feature_name.pascalCase()}}Entity(id: id);
+  }
+}
+
+extension {{feature_name.pascalCase()}}DtoListX on List<{{feature_name.pascalCase()}}Dto> {
+  {{feature_name.pascalCase()}}Entities toEntities() => map((item) => item.toEntity()).toList();
+}

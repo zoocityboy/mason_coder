@@ -1,0 +1,34 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:bloc_test/bloc_test.dart';
+import 'package:{{packageName.snakeCase()}}/features/{{feature_name.snakeCase()}}/presentation/bloc/{{feature_name.snakeCase()}}_list/{{feature_name.snakeCase()}}_list_bloc.dart';
+import 'package:{{packageName.snakeCase()}}/features/{{feature_name.snakeCase()}}/presentation/pages/list/{{feature_name.snakeCase()}}_list_page.dart';
+import 'package:{{packageName.snakeCase()}}/features/{{feature_name.snakeCase()}}/presentation/widgets/list/{{feature_name.snakeCase()}}_list_bloc_content_view.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import '../../../../../helpers/helpers.dart';
+import '../../../../../helpers/mocks.dart';
+
+class Mock{{feature_name.pascalCase()}}ListBloc extends MockBloc<{{feature_name.pascalCase()}}ListEvent, {{feature_name.pascalCase()}}ListState>
+    implements {{feature_name.pascalCase()}}ListBloc {}
+
+void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  late {{feature_name.pascalCase()}}ListBloc mockBloc;
+  setUpAll(() {
+    setupMockInjection();
+    mockBloc = Mock{{feature_name.pascalCase()}}ListBloc();
+  });
+  setUp(() {
+    mockInLocator(mockBloc);
+  });
+  group('{{feature_name.pascalCase()}}ListPage', () {
+    testWidgets('renders `{{feature_name.pascalCase()}}BlocListContentView`', (tester) async {
+      final initState = {{feature_name.pascalCase()}}ListInitialState();
+      whenListen(mockBloc, Stream.fromIterable([initState]), initialState: initState);
+      await tester.pumpApp({{feature_name.pascalCase()}}BlocListPage());
+      expect(find.byType({{feature_name.pascalCase()}}ListBlocContentView), findsOneWidget);
+    });
+  });
+}
