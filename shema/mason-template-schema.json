@@ -16,8 +16,13 @@
       "description": "Description of the template"
     },
     "source": {
-      "$ref": "#/$defs/local",
-      "description": "Source directory for the template"
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Folder to copy from the template.",
+        "$ref": "#/$defs/local"
+      },
+      "description": "Source directories for the template"
     },
    "vars": {
       "type": ["object", "array"],
