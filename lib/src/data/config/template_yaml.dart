@@ -19,13 +19,12 @@ class TemplateYaml {
     required this.name,
     required this.description,
     required this.replaces,
-    this.source = const ['/'],
-    this.target = Constants.bricksFolder,
-    this.files = const [],
+    this.source = const ['lib'],
+    this.target = Constants.brickFolder,
     this.vars = const <String, BrickVariableProperties>{},
-    this.clean = const [],
-    this.ext = const [],
-    this.version = '0.0.0',
+    this.clean,
+    this.ext,
+    this.version = '0.1.0',
   });
   factory TemplateYaml.load() {
     try {
@@ -34,6 +33,7 @@ class TemplateYaml {
       return fromFile();
     }
   }
+
   static TemplateYaml fromPubspec() {
     final configFile = File(p.join(Directory.current.path, Constants.pubspeckFileName));
     if (!configFile.existsSync()) throw MasonCoderConfigFileNotFound();
@@ -65,7 +65,7 @@ class TemplateYaml {
   factory TemplateYaml.fromJson(Map<dynamic, dynamic> json) => _$TemplateYamlFromJson(json);
 
   /// Converts [TemplateYaml] to [Map]
-  Map<dynamic, dynamic> toJson() => _$TemplateYamlToJson(this);
+  Map<String, dynamic> toJson() => _$TemplateYamlToJson(this);
 
   /// Name of the brick.
   @JsonKey(name: 'template')
@@ -75,13 +75,11 @@ class TemplateYaml {
   final String description;
 
   /// Version of the brick (semver).
-  @JsonKey(defaultValue: ['/'])
+  @JsonKey(defaultValue: ['lib'])
   final List<String> source;
 
-  @JsonKey(defaultValue: Constants.bricksFolder)
+  @JsonKey(defaultValue: Constants.brickFolder)
   final String target;
-
-  final List<String> files;
 
   /// Map of variable properties used when templating a brick.
   @VarsConverter()
@@ -89,9 +87,9 @@ class TemplateYaml {
 
   final Replaces replaces;
 
-  final List<String> clean;
+  final List<String>? clean;
 
-  final List<String> ext;
+  final List<String>? ext;
 
   final String version;
 
@@ -108,12 +106,16 @@ class TemplateYaml {
   String get brickDestinationPath => p.join(
         target,
         name,
-        Constants.brickFolder,
+        Constants.brickTeplateFolder,
       );
 
   /// Path definition of template root
   /// "root/bricks/my-brick/"
-  String get brickRootPath => p.join(target, name);
+  String get brickRootPath => target;
+
+  String get bundleRootPath => Constants.bundleFolder;
+
+  String get bundleName => '$name.bundle';
 
   Map<String, dynamic> varsToJson() {
     final json = <String, dynamic>{};

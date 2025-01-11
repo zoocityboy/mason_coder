@@ -7,22 +7,16 @@ part 'replaces.g.dart';
 @JsonSerializable()
 class Replaces {
   Replaces({
-    this.import = const [],
     this.path = const [],
     this.content = const [],
   });
   @protected
-  final List<ReplaceVariableProperties> import;
-  List<ReplaceVariableProperties> get imports =>
-      import.map((e) => e.copyWith(type: ReplaceVariableType.import)).toList();
-  @protected
   final List<ReplaceVariableProperties> path;
-  List<ReplaceVariableProperties> get paths => path.map((e) => e.copyWith(type: ReplaceVariableType.path)).toList();
+  List<ReplaceVariableProperties> get paths => path;
 
   @protected
   final List<ReplaceVariableProperties> content;
-  List<ReplaceVariableProperties> get contents =>
-      content.map((e) => e.copyWith(type: ReplaceVariableType.content)).toList();
+  List<ReplaceVariableProperties> get contents => content;
 
   factory Replaces.fromJson(Map<String, dynamic> json) => _$ReplacesFromJson(json);
   Map<String, dynamic> toJson() => _$ReplacesToJson(this);

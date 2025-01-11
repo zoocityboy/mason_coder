@@ -1,6 +1,6 @@
 ![alt text](https://raw.githubusercontent.com/zoocityboy/mason_coder/main/assets/mason_coder.webp "Resoure")
 Developed by 🦏 [zoocityboy][zoocityboy_link]
-# Melos Workspace Cleaner
+# Mason Coder
 
 [![Pub](https://img.shields.io/pub/v/mason_coder.svg?style=flat-square)](https://pub.dev/packages/mason_coder)
 [![pub points](https://img.shields.io/pub/points/mason_coder?style=flat-square&color=2E8B57&label=pub%20points)](https://pub.dev/packages/mason_coder/score)
@@ -12,104 +12,64 @@ Developed by 🦏 [zoocityboy][zoocityboy_link]
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=flat-square&logo=dart&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=flat-square&logo=githubactions&logoColor=white)
 
-# Mason Coder
+[Documentation](https://zoocityboy.github.io/mason_coder/)
 
 Mason Coder is a tool for creating and managing Mason Brick templates efficiently. It helps in converting your runnable code into Mason Bricks.
 
 ## Features
 
-- Generate templates for various use cases.
-- Manage and customize templates easily.
-- Integrate with Mason for streamlined template handling.
-
-## Project Structure
-
-```
-. ├── bin/ 
-│ └── mason_coder.dart 
-├── docs/ 
-│ ├── .astro/ 
-│ ├── public/ 
-│ ├── src/ 
-│ └── README.md 
-├── lib/ 
-│ ├── bundle/ 
-│ │ └── mason_coder.dart 
-│ └── src/ 
-├── samples/ 
-├── shema/ 
-│ └── mason-template-schema.json 
-├── .gitignore 
-├── analysis_options.yaml 
-├── build.yaml 
-├── CHANGELOG.md 
-├── generate.sh 
-├── pubspec.yaml 
-├── pubspec.lock 
-└── README.md
-```
+- [x] Create brick from existing package.
+- [ ] Create multiple bricks from one codebase. 
+- [x] Generate templates for various use cases.
+- [x] Manage and customize templates easily.
+- [x] Integrate with Mason for streamlined template handling.
 
 ## Installation
 
 To get started with this project, you need to have Dart and Mason installed on your machine.
 
-1. **Clone the repository:**
+ ```sh
+dart pub global activate mason_coder
+```
 
-    ```sh
-    git clone <repository-url>
-    cd <repository-directory>
-    ```
+## Configuration
 
-2. **Install dependencies:**
+You can initialize configirution for existing package.
 
-    ```sh
-    dart pub get
-    ```
+```bash
+mason_coder init
+```
 
-3. **Install Mason Coder:**
 
-    ```sh
-    dart pub global activate mason_coder
-    ```
 
 ## Running the Project
 
 To run the project, use the following commands:
 
-1. **Generate templates:**
+**Generate templates:**
 
-    ```sh
-    mason_coder make
+    ```bash
+    mason_coder create
+    # or
+    dart run global mason_coder create
     ```
 
-2. **Run the main script:**
-
-    ```sh
-    dart run global mason_coder
-    ```
+Your new brick will be generated in the `target` folder defined in `mason_template.yaml` or in the default `.brick` folder.
 
 ## Usage
-
-To use the generated templates, follow these steps:
-
-1. **Generate a new template:**
-
-    ```sh
-    mason_coder make <template-name>
-    ```
-
-2. **Customize the generated files as needed.**
-
-## Creating Settings for mason_template.yaml
 
 The `mason_template.yaml` file is used to define the structure and variables for your Mason templates. Here is an example configuration:
 
 ```yaml
-template: eit_feature
-description: Feature template for Embedit Platform.
+# Brick name
+template: my_feature
+# Brick description
+description: Clean architecture feature
+# Copiable sources
 source: 
- - lib/features/tpl_feature_name
- - test/
+ - lib/features/custom
+ - test
+# Brick variables
 vars:
   name:
     type: string
@@ -164,7 +124,7 @@ replaces:
     - key: "islist_"
       value: ""
     
-    - key: eit_feature
+    - key: my_feature
       value: "{{packageName.snakeCase()}}"
 
     - key: tpl_feature_name_detail
@@ -179,14 +139,6 @@ replaces:
       value: "{{feature_name.snakeCase()}}"
     - key: TplFeatureName
       value: "{{feature_name.pascalCase()}}"
-    - key: tplFeatureNameRouter
-      value: "{{feature_name.camelCase()}}Router"
-    - key: tplFeatureNameListRoute
-      value: "{{feature_name.snakeCase()}}ListRoute"
-    - key: tplFeatureNameDetailRoute
-      value: "{{feature_name.snakeCase()}}DetailRoute"
-    - key: "a@b.cz"
-      value: "{{{feature_owner}}}"
   path:
     - key: tpl_feature_name
       value: "{{feature_name.snakeCase()}}"

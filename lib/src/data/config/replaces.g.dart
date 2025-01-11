@@ -12,17 +12,9 @@ Replaces _$ReplacesFromJson(Map json) => $checkedCreate(
       ($checkedConvert) {
         $checkKeys(
           json,
-          allowedKeys: const ['import', 'path', 'content'],
+          allowedKeys: const ['path', 'content'],
         );
         final val = Replaces(
-          import: $checkedConvert(
-              'import',
-              (v) =>
-                  (v as List<dynamic>?)
-                      ?.map((e) => ReplaceVariableProperties.fromJson(
-                          Map<String, dynamic>.from(e as Map)))
-                      .toList() ??
-                  const []),
           path: $checkedConvert(
               'path',
               (v) =>
@@ -45,7 +37,6 @@ Replaces _$ReplacesFromJson(Map json) => $checkedCreate(
     );
 
 Map<String, dynamic> _$ReplacesToJson(Replaces instance) => <String, dynamic>{
-      'import': instance.import.map((e) => e.toJson()).toList(),
       'path': instance.path.map((e) => e.toJson()).toList(),
       'content': instance.content.map((e) => e.toJson()).toList(),
     };

@@ -1,0 +1,20 @@
+template: cubit_brick
+description: A new cubit_brick brick
+source:
+  - lib
+  - test
+target: .brick
+vars:
+  name:
+    type: string
+    prompt: "What`s a name"
+replaces:
+  path:
+    - key: cubit_brick
+      value: "{{name.snakeCase()}}"
+  content:
+    - key: CubitBrick
+      value: "{{name.pascalCase()}}"
+    - key: cubit_brick
+      value: "{{name.snakeCase()}}"
+version: 0.1.0

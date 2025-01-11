@@ -7,4 +7,3 @@ export 'src/data/config/template_yaml.dart';
 export 'src/data/constants.dart';
 export 'src/data/exceptions/exceptions.dart';
 export 'src/utils/process.template.dart';
-export 'src/utils/logger.dart';

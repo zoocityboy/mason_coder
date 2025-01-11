@@ -1,15 +1,17 @@
 import 'package:mason_coder/src/commands/base.dart';
+import 'package:promptly/promptly.dart';
 
 class ValidateCommand extends BaseCommand {
   ValidateCommand() : super('validate', 'Validate brick settings');
 
   @override
-  Future<void> run() async {
-    logger.start(name, message: description);
-    logger.verticalLine();
-    final progress = logger.progress('Validating brick settings...');
+  Future<int> run() async {
+    header(name, message: description);
+    line();
+    final progress = processing('Validating brick settings...');
     await Future.delayed(Duration(seconds: 3));
     progress.success('Brick settings are valid');
-    logger.end('/$name/ complete');
+
+    return finishSuccesfuly('/$name/ complete');
   }
 }

@@ -78,7 +78,7 @@ class BrickCreatorGenerator extends MasonGenerator {
           ? <TemplateFile>[
               TemplateFile(
                 p.join(BrickYaml.hooks, 'pubspec.yaml'),
-                _hooksPubspecContent(tpl.name, tpl.version),
+                _hooksPubspecContent(tpl.name, masonVersion: tpl.version),
               ),
               TemplateFile(
                 p.join(BrickYaml.hooks, 'pre_gen.dart'),

@@ -1,0 +1,22 @@
+name: bloc_brick
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+publish_to: none
+
+environment:
+  flutter: ">=3.20.0 <4.0.0"
+  sdk: ">=3.6.0"
+  
+# Add regular dependencies here.
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.6
+
+  meta: ^1.15.0
+
+dev_dependencies:
+  bloc_test: ^9.1.7
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter

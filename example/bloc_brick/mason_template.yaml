@@ -1,0 +1,31 @@
+template: bloc_brick
+description: A new bloc_brick brick
+source:
+  - lib
+  - test
+target: .brick
+vars:
+  feature_name:
+    type: string
+    default: custom
+    prompt: "What`s a feature name"
+  name:
+    type: string
+    prompt: "What`s a name"
+  txt:
+    type: string
+    prompt: "Test value"
+replaces:
+  path:
+    - key: custom
+      value: "{{feature_name.snakeCase()}}"
+    - key: bloc_brick
+      value: "{{name.snakeCase()}}"
+  content:
+    - key: custom
+      value: "{{feature_name.snakeCase()}}"
+    - key: BlocBrick
+      value: "{{name.pascalCase()}}"
+    - key: bloc_brick
+      value: "{{name.snakeCase()}}"
+version: 0.1.1-dev.0

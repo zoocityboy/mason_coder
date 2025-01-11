@@ -1,0 +1,7 @@
+name: bloc_brick_hooks
+
+environment:
+  sdk: ">=3.6.0"
+
+dependencies:
+  mason: ^0.1.1-dev.0

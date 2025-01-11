@@ -1,7 +1,0 @@
-name: eit_feature_test
-
-environment:
-  sdk: ">=3.6.0"
-
-dependencies:
-  mason: ">=0.1.0 <0.2.0"

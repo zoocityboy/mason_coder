@@ -1,7 +1,0 @@
-name: eit_feature_hooks_498667185
-
-environment:
-  sdk: ">=3.6.0"
-
-dependencies:
-  mason: ">=0.1.0 <0.2.0"

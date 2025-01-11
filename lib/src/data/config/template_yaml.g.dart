@@ -17,7 +17,6 @@ TemplateYaml _$TemplateYamlFromJson(Map json) => $checkedCreate(
             'description',
             'source',
             'target',
-            'files',
             'vars',
             'replaces',
             'clean',
@@ -34,29 +33,18 @@ TemplateYaml _$TemplateYamlFromJson(Map json) => $checkedCreate(
               'source',
               (v) =>
                   (v as List<dynamic>?)?.map((e) => e as String).toList() ??
-                  ['/']),
+                  ['lib']),
           target: $checkedConvert('target', (v) => v as String? ?? '.brick'),
-          files: $checkedConvert(
-              'files',
-              (v) =>
-                  (v as List<dynamic>?)?.map((e) => e as String).toList() ??
-                  const []),
           vars: $checkedConvert(
               'vars',
               (v) => v == null
                   ? const <String, BrickVariableProperties>{}
                   : const VarsConverter().fromJson(v)),
-          clean: $checkedConvert(
-              'clean',
-              (v) =>
-                  (v as List<dynamic>?)?.map((e) => e as String).toList() ??
-                  const []),
-          ext: $checkedConvert(
-              'ext',
-              (v) =>
-                  (v as List<dynamic>?)?.map((e) => e as String).toList() ??
-                  const []),
-          version: $checkedConvert('version', (v) => v as String? ?? '0.0.0'),
+          clean: $checkedConvert('clean',
+              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
+          ext: $checkedConvert('ext',
+              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
+          version: $checkedConvert('version', (v) => v as String? ?? '0.1.0'),
         );
         return val;
       },
@@ -69,11 +57,10 @@ Map<String, dynamic> _$TemplateYamlToJson(TemplateYaml instance) =>
       'description': instance.description,
       'source': instance.source,
       'target': instance.target,
-      'files': instance.files,
       if (const VarsConverter().toJson(instance.vars) case final value?)
         'vars': value,
       'replaces': instance.replaces.toJson(),
-      'clean': instance.clean,
-      'ext': instance.ext,
+      if (instance.clean case final value?) 'clean': value,
+      if (instance.ext case final value?) 'ext': value,
       'version': instance.version,
     };

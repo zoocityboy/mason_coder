@@ -1,0 +1,17 @@
+name: bloc_brick
+description: A new bloc_brick brick
+version: 0.1.0
+environment:
+  mason: 0.1.1-dev.0
+vars:
+  feature_name:
+    type: string
+    default: custom
+    prompt: "What`s a feature name"
+  name:
+    type: string
+    prompt: "What`s a name"
+  txt:
+    type: string
+    prompt: Test value
+

@@ -5,7 +5,7 @@ class ProcessTemplate {
   final TemplateYaml tpl;
 
   List<TemplateFile> generate() {
-    List<String> ignorePathes = tpl.clean;
+    List<String> ignorePathes = tpl.clean ?? [];
     List<TemplateFile> files = [];
     for (final dir in tpl.source) {
       final rootFolder = Directory(p.join(Directory.current.path, dir.replaceAll('\\', Platform.pathSeparator)));
@@ -17,15 +17,13 @@ class ProcessTemplate {
         final isOk = !ignorePathes.any((ignore) => path.contains(ignore));
         return isOk;
       });
-      for (final _ in contentFiles) {
-        final file = _;
+      for (final tmp in contentFiles) {
+        final file = tmp;
         if (file is File) {
           final processedContentOfFile = _processContent(file);
           final rel = p.relative(file.path);
           final path = _replacePath(rel).join(Platform.pathSeparator);
-
           final filePath = p.join(tpl.target, BrickYaml.dir, path);
-          // stdout.writeln(filePath);
           final templateFile = TemplateFile(
             filePath,
             processedContentOfFile,
@@ -50,8 +48,8 @@ class ProcessTemplate {
   }
 
   @protected
-  String _processLine(String _) {
-    var line = _;
+  String _processLine(String tmp) {
+    var line = tmp;
 
     final prefixedEnteries = tpl.replaces.contents.where((e) => e.prefix != null).toList();
     final unprefixedEnteries = tpl.replaces.contents.where((e) => e.prefix == null).toList();

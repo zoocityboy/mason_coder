@@ -12,11 +12,12 @@ abstract class Constants {
   static const String bundlePubspeclKey = 'mason_template';
 
   /// Folder structure
-  static const String bricksFolder = '.brick';
+  static const String brickFolder = '.brick';
   static const String hooksFolder = '.hooks';
+  static const String bundleFolder = '.bundle';
 
   /// File structure
-  static const String brickFolder = '__brick__';
+  static const String brickTeplateFolder = '__brick__';
 
   /// RegExp
   static RegExp importLineContent = RegExp(r"\'(.*?)\'");

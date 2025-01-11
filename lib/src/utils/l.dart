@@ -1,4 +1,4 @@
-import 'package:interact_cli/interact_cli.dart';
+import 'package:mason/mason.dart';
 import 'package:meta/meta.dart';
 
 @protected

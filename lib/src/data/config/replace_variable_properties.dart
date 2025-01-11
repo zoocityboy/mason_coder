@@ -23,23 +23,11 @@ class ReplaceVariableProperties {
   /// This class represents a Path Definition.
   @internal
   const ReplaceVariableProperties({
-    this.type = ReplaceVariableType.content,
     required this.key,
     this.value = '',
     this.prefix,
     this.suffix,
   });
-
-  /// {@macro brick_variable_properties}
-  ///
-  /// Creates an instance of a [ReplaceVariableProperties]
-  /// of type [ReplaceVariableProperties.content].
-  const ReplaceVariableProperties.content()
-      : this(
-          type: ReplaceVariableType.content,
-          key: 'string',
-          value: '',
-        );
 
   /// A factory method to create an instance of PathDefinition from a JSON map.
   factory ReplaceVariableProperties.fromJson(Map<String, dynamic> json) {
@@ -51,9 +39,6 @@ class ReplaceVariableProperties {
 
   /// The key of the path definition.
   final String key;
-
-  @JsonKey(defaultValue: ReplaceVariableType.content)
-  final ReplaceVariableType type;
 
   /// The value of the path definition. It has a default value of an empty string.
   @JsonKey(defaultValue: '')
@@ -82,14 +67,12 @@ class ReplaceVariableProperties {
 
   ReplaceVariableProperties copyWith({
     String? key,
-    ReplaceVariableType? type,
     String? value,
     String? prefix,
     String? suffix,
   }) {
     return ReplaceVariableProperties(
       key: key ?? this.key,
-      type: type ?? this.type,
       value: value ?? this.value,
       prefix: prefix ?? this.prefix,
       suffix: suffix ?? this.suffix,

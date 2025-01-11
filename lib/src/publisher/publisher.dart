@@ -1,39 +1,46 @@
 import 'dart:convert';
 
 import 'package:archive/archive_io.dart';
-import 'package:mason/mason.dart';
-import 'package:mason_coder/src/data/config/template_yaml.dart';
-import 'package:mason_coder/src/utils/logger.dart';
+import 'package:mason/mason.dart' hide StringCaseExtensions;
+import 'package:mason_coder/mason_coder.dart';
 import 'package:path/path.dart' as path;
+import 'package:promptly/promptly.dart';
 import 'package:universal_io/io.dart';
 
 part 'publisher.crate.dart';
 part 'publisher.mason.dart';
 
 class Publisher {
-  Publisher(this.logger, this.tpl, this.bundlePassword);
-  final Console logger;
+  Publisher(this.console, this.tpl, this.bundlePassword);
+  final Console console;
   final TemplateYaml tpl;
   final String bundlePassword;
   Future<void> create() async {
-    final bundleProgress = logger.progress('Generating bundle');
-    final bundle = createBundle(Directory(tpl.brickRootPath));
+    console.writeMessage('Publisher.create');
+    console.writeMessage('directory: ${tpl.target}');
+    console.writeMessage('target: ${tpl.target}');
+    final bundleProgress = console.processing('Generating bundle');
+    final bundle = createBundle(Directory(tpl.target));
     final bundleGenerator = _BrickUniversalBundleGenerator(
-      outputDirectoryPath: tpl.target,
+      outputDirectoryPath: tpl.bundleRootPath,
       bundle: bundle,
     );
     await bundleGenerator.generate();
     bundleProgress.success('Generated 1 file.');
     final bundlePath = canonicalize(bundleGenerator.bundleFile.path);
-    logger.info('Bundle created at $bundlePath');
+    info('Bundle created at $bundlePath');
   }
 
   Future<void> generate() async {
+    final targetFolder = File(path.join(
+      Directory.current.path,
+      Constants.bundleFolder,
+    ));
     final content = File(
       path.join(
         Directory.current.path,
-        tpl.target,
-        '${tpl.name}.bundle',
+        Constants.bundleFolder,
+        tpl.bundleName,
       ),
     ).readAsBytesSync();
 
@@ -46,9 +53,9 @@ class Publisher {
       'vars': data['vars'] as Map,
     };
 
-    final bundleFile = File(path.join(Directory.current.path, tpl.target, '${tpl.name}.bundle'));
-    final metaFile = File(path.join(Directory.current.path, tpl.target, '${tpl.name}.meta.json'));
-    final zipedFile = File(path.join(Directory.current.path, tpl.target, '${tpl.name}+${data['version']}.zip'));
+    final bundleFile = File(path.join(targetFolder.path, tpl.bundleName));
+    final metaFile = File(path.join(targetFolder.path, '${tpl.name}.meta.json'));
+    final zipedFile = File(path.join(targetFolder.path, '${tpl.name}+${data['version']}.zip'));
 
     if (metaFile.existsSync()) metaFile.deleteSync();
     metaFile.createSync();
@@ -65,7 +72,7 @@ class Publisher {
     await encoder.addFile(metaFile);
     encoder.closeSync();
 
-    bundleFile.copySync(path.join(tpl.target, '${tpl.name}.bundle'));
+    bundleFile.copySync(path.join(tpl.target, tpl.bundleName));
     metaFile.copySync(path.join(tpl.target, '${tpl.name}.meta.json'));
     zipedFile.copySync(path.join(tpl.target, '${tpl.name}-v${data['version']}.zip'));
   }
@@ -88,7 +95,7 @@ class Publisher {
         ],
       );
     } catch (e) {
-      logger.error(e.toString());
+      error(e.toString());
     }
   }
 }
