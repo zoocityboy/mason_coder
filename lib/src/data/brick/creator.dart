@@ -18,17 +18,14 @@ part 'creator.license.dart';
 part 'creator.readme.dart';
 
 class BrickCreatorGenerator extends MasonGenerator {
-  factory BrickCreatorGenerator.create(TemplateYaml tpl) =>
-      BrickCreatorGenerator._(tpl, processor: ProcessTemplate(tpl));
+  factory BrickCreatorGenerator.create(TemplateYaml tpl, String masonVersion) =>
+      BrickCreatorGenerator._(tpl, masonVersion: masonVersion, processor: ProcessTemplate(tpl));
 
   final TemplateYaml tpl;
   final ProcessTemplate processor;
 
-  BrickCreatorGenerator._(
-    this.tpl, {
-    bool createHooks = true,
-    required this.processor,
-  }) : super(
+  BrickCreatorGenerator._(this.tpl, {bool createHooks = true, required this.processor, required String masonVersion})
+      : super(
           '__new_brick__',
           'Creates a new brick.',
           files: [
@@ -37,8 +34,9 @@ class BrickCreatorGenerator extends MasonGenerator {
               brickYamlContent(
                 name: tpl.name,
                 description: tpl.description,
-                masonVersion: tpl.version,
+                masonVersion: masonVersion,
                 vars: tpl.vars,
+                brickVersion: tpl.version,
               ),
             ),
             TemplateFile(
@@ -78,7 +76,7 @@ class BrickCreatorGenerator extends MasonGenerator {
           ? <TemplateFile>[
               TemplateFile(
                 p.join(BrickYaml.hooks, 'pubspec.yaml'),
-                _hooksPubspecContent(tpl.name, masonVersion: tpl.version),
+                _hooksPubspecContent(tpl.name, tpl.version, masonVersion: tpl.version),
               ),
               TemplateFile(
                 p.join(BrickYaml.hooks, 'pre_gen.dart'),

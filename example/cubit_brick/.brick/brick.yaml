@@ -1,0 +1,10 @@
+name: cubit_brick
+description: A new cubit_brick brick
+version: 0.1.0+dev.0
+environment:
+  mason: 0.1.0
+vars:
+  name:
+    type: string
+    prompt: "What`s a name"
+

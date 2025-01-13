@@ -10,6 +10,7 @@ class BundleCommand extends BaseCommand {
       : super(
           name ?? 'bundle',
           description ?? 'Make a bundle for publishing',
+          category: 'Manage',
         );
 
   @override
@@ -17,8 +18,9 @@ class BundleCommand extends BaseCommand {
     header(name, message: description);
     final tpl = TemplateYaml.load();
     final bundleFile = File(path.join(Constants.bundleFolder, tpl.bundleName));
-    if (!bundleFile.existsSync()) {
-      error('Sorry i can\'t find brick folder `${tpl.bundleName}`.');
+    final brickFile = File(path.join(Constants.brickFolder, 'brick.yaml'));
+    if (!brickFile.existsSync()) {
+      error('Sorry i can\'t find brick.yaml in `${brickFile.path}`.');
       final lines = '''
 before bundle command you have to run:
 - ${'mason_coder create'.yellow()}
@@ -33,12 +35,18 @@ before bundle command you have to run:
       return finishWithError('/$name/', message: 'No bricks found');
     }
 
-    final progress = processing('Bundling brick...');
+    if (!bundleFile.existsSync()) {
+      final progress = processing('Creating bundled brick...');
+      final publisher = Publisher(console, tpl, '');
+      await publisher.create();
+      progress.success('Brick `${tpl.name}` bundled');
+    }
+
+    final progress = processing('Preparing for publishing...');
     final publisher = Publisher(console, tpl, '');
-    await publisher.create();
     await publisher.generate();
     await Future.delayed(Duration(seconds: 2));
-    progress.success('Brick bundled');
-    return finishSuccesfuly('/$name/', message: 'complete');
+    progress.success('Brick `${tpl.name}` is ready for publishing');
+    return finishSuccesfuly('/${tpl.bundleName}/', message: 'completed, you can now publish your brick');
   }
 }

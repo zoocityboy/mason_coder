@@ -10,7 +10,7 @@ import 'package:promptly/promptly.dart';
 import 'package:universal_io/io.dart';
 
 class InitCommand extends BaseCommand {
-  InitCommand() : super('init', 'Initialize configuration');
+  InitCommand() : super('init', 'Initialize configuration in your existing package.', category: 'Start');
   bool get configExistts => File(join(Directory.current.path, Constants.bundleConfigFileName)).existsSync();
   bool get featuresExists => Directory(join(Directory.current.path, 'lib', 'features')).existsSync();
   Directory? get firstFeature {
@@ -42,6 +42,7 @@ class InitCommand extends BaseCommand {
       }
       line();
     }
+    return null;
   }
 
   int createConfiguration() {

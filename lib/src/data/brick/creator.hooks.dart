@@ -1,8 +1,8 @@
 part of 'creator.dart';
 
-String _hooksPubspecContent(String name, {String masonVersion = '^0.1.0'}) => '''
+String _hooksPubspecContent(String name, String packageVersion, {String masonVersion = '^0.1.0'}) => '''
 name: ${name}_hooks
-
+version: $packageVersion
 environment:
   sdk: ^3.5.0
 

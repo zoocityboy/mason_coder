@@ -1,5 +1,6 @@
 template: cubit_brick
 description: A new cubit_brick brick
+version: 0.1.0+dev.0
 source:
   - lib
   - test
@@ -17,4 +18,4 @@ replaces:
       value: "{{name.pascalCase()}}"
     - key: cubit_brick
       value: "{{name.snakeCase()}}"
-version: 0.1.0
+

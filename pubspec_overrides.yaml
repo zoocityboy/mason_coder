@@ -1,4 +1,0 @@
-# melos_managed_dependency_overrides: promptly
-dependency_overrides:
-  promptly:
-    path: /Users/zoocityboy/Develop/zoocityboy/promptly

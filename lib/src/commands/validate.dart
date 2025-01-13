@@ -2,7 +2,7 @@ import 'package:mason_coder/src/commands/base.dart';
 import 'package:promptly/promptly.dart';
 
 class ValidateCommand extends BaseCommand {
-  ValidateCommand() : super('validate', 'Validate brick settings');
+  ValidateCommand() : super('validate', 'Validate brick settings', aliases: ['v'], category: 'Start');
 
   @override
   Future<int> run() async {

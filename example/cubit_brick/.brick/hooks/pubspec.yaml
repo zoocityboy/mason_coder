@@ -1,0 +1,7 @@
+name: cubit_brick_hooks
+version: 0.1.0+dev.0
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  mason: ^0.1.0+dev.0

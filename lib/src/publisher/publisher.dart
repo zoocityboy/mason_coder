@@ -7,7 +7,6 @@ import 'package:path/path.dart' as path;
 import 'package:promptly/promptly.dart';
 import 'package:universal_io/io.dart';
 
-part 'publisher.crate.dart';
 part 'publisher.mason.dart';
 
 class Publisher {
@@ -71,10 +70,6 @@ class Publisher {
     await encoder.addFile(bundleFile);
     await encoder.addFile(metaFile);
     encoder.closeSync();
-
-    bundleFile.copySync(path.join(tpl.target, tpl.bundleName));
-    metaFile.copySync(path.join(tpl.target, '${tpl.name}.meta.json'));
-    zipedFile.copySync(path.join(tpl.target, '${tpl.name}-v${data['version']}.zip'));
   }
 
   Future<void> publish(
